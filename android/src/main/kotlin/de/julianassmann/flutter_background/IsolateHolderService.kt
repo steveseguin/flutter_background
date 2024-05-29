@@ -125,12 +125,12 @@ class IsolateHolderService : Service() {
                 acquire()
             }
         }
-		if (ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION){
+		try {
 			startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
-		} else if (ServiceInfo.FOREGROUND_SERVICE_MEDIA_PROJECTION){
-			startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
-		} else {
-			startForeground(1, notification)
+		} catch(e){
+			try {
+				startForeground(1, notification)
+			} catch(ee){}
 		}
 
     }
