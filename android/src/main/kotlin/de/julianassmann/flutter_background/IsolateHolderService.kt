@@ -126,7 +126,7 @@ class IsolateHolderService : Service() {
             }
         }
 
-	startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+		startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_MEDIA_PROJECTION)
 
     }
 
