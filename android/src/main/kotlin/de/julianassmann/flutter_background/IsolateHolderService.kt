@@ -126,6 +126,8 @@ class IsolateHolderService : Service() {
             }
         }
 
+	startForeground(1, notification);
+
     }
 
     override fun onTaskRemoved(rootIntent: Intent) {
