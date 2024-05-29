@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ServiceInfo
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.IBinder
@@ -124,8 +125,13 @@ class IsolateHolderService : Service() {
                 acquire()
             }
         }
-
-		startForeground(1, notification);
+		if (ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION){
+			startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
+		} else if (ServiceInfo.FOREGROUND_SERVICE_MEDIA_PROJECTION){
+			startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
+		} else {
+			startForeground(1, notification)
+		}
 
     }
 
