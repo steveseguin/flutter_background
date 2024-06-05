@@ -13,6 +13,8 @@ import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import androidx.core.app.NotificationCompat
+import androidx.core.app.ServiceCompat
+
 
 class IsolateHolderService : Service() {
     companion object {
@@ -127,7 +129,7 @@ class IsolateHolderService : Service() {
         }
 	
 	try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 14 or newer
+            if (Build.VERSION.SDK_INT >= 34) { // Android 14 or newer
                 ServiceCompat.startForeground(
                     this,
                     1, 
