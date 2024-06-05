@@ -13,7 +13,6 @@ import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import androidx.core.app.NotificationCompat
-import androidx.core.app.ServiceCompat
 
 
 class IsolateHolderService : Service() {
@@ -130,7 +129,7 @@ class IsolateHolderService : Service() {
 	
 	try {
             if (Build.VERSION.SDK_INT >= 34) { // Android 14 or newer
-                ServiceCompat.startForeground(
+                startForeground(
                     this,
                     1, 
                     notification,
@@ -139,7 +138,7 @@ class IsolateHolderService : Service() {
                     ServiceInfo.FOREGROUND_SERVICE_CAMERA
                 )
             } else {
-                ServiceCompat.startForeground(
+                startForeground(
                     this,
                     1, 
                     notification,
