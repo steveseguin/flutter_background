@@ -133,9 +133,7 @@ class IsolateHolderService : Service() {
                     this,
                     1, 
                     notification,
-                    ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION or
-                    ServiceInfo.FOREGROUND_SERVICE_MICROPHONE or
-                    ServiceInfo.FOREGROUND_SERVICE_CAMERA
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
                 )
             } else {
                 startForeground(
