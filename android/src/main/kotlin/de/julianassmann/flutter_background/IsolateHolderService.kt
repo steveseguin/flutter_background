@@ -14,7 +14,6 @@ import android.os.IBinder
 import android.os.PowerManager
 import androidx.core.app.NotificationCompat
 
-
 class IsolateHolderService : Service() {
     companion object {
         @JvmStatic
@@ -126,25 +125,19 @@ class IsolateHolderService : Service() {
                 acquire()
             }
         }
-	
+
 	try {
-            if (Build.VERSION.SDK_INT >= 34) { // Android 14 or newer
-                startForeground(
-                    this,
-                    1, 
-                    notification,
-                    ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
-                )
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 14 or newer
+               startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
             } else {
-                startForeground(
-                    this,
-                    1, 
-                    notification,
-                    0
-                )
+                startForeground(1, notification)
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            try {
+                startForeground(1, notification)
+            } catch (ee: Exception) {
+                ee.printStackTrace()
+            }
         }
 
     }
