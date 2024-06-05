@@ -125,13 +125,22 @@ class IsolateHolderService : Service() {
                 acquire()
             }
         }
-		
-		try {
-            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION | ServiceInfo.FOREGROUND_SERVICE_MICROPHONE | ServiceInfo.FOREGROUND_SERVICE_CAMERA)
+	
+	try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 14 or newer
+                startForeground(
+                    1, notification,
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION|ServiceInfo.FOREGROUND_SERVICE_MICROPHONE|ServiceInfo.FOREGROUND_SERVICE_CAMERA
+                )
+            } else {
+                startForeground(1, notification)
+            }
         } catch (e: Exception) {
             try {
                 startForeground(1, notification)
-            } catch (ee: Exception) {}
+            } catch (ee: Exception) {
+                ee.printStackTrace()
+            }
         }
 
     }
