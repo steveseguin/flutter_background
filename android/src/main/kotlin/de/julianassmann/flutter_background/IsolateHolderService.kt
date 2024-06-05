@@ -127,7 +127,7 @@ class IsolateHolderService : Service() {
         }
 		
 		try {
-            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
+            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION | ServiceInfo.FOREGROUND_SERVICE_MICROPHON | ServiceInfo.FOREGROUND_SERVICE_CAMERA)
         } catch (e: Exception) {
             try {
                 startForeground(1, notification)
